@@ -1,4 +1,4 @@
-## Contacts
+## My contacts
 - [GitHub](https://github.com/BJNFNE/)
 - [X](https://x.com/BJNFNE)
 - [Telegram](https://t.me/BJNFNE)

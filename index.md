@@ -19,5 +19,5 @@ These are projects where I actively contributed or collaborated with:
 
 ## My partners
 - [horsicq](https://github.com/horsicq/)
-- [DosX-dev](https://github.com/DosX-dev)
+- [DosX-dev](https://dosx.su)
 - [DerCodeDev](https://samir24.de)

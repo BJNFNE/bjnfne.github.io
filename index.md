@@ -2,6 +2,7 @@
 - [GitHub](https://github.com/BJNFNE/)
 - [X](https://x.com/BJNFNE)
 - [Telegram](https://t.me/BJNFNE)
+- [Mastadon](https://mastodon.social/@bjnfne)
 
 
 # My projects

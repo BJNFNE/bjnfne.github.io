@@ -120,7 +120,7 @@
             fragment.appendChild(div);
             S.observeEl(div);
         });
-        
+
         feedEl.appendChild(fragment);
     }
 

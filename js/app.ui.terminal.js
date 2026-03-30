@@ -63,7 +63,7 @@
         },
         projects: function () {
             var db = S.db;
-            var lines = ['<span class="terminal__heading">Projects:</span>', ''];
+            var lines = ['<span class="terminal__heading">Projects:</span>'];
 
             if (db && db.myProjects) {
                 db.myProjects.forEach(function (p) {
@@ -164,12 +164,12 @@
         histIdx = history.length;
 
         var handler = COMMANDS[trimmed];
-        
+
         if (inputLine) inputLine.style.display = 'none';
-        
+
         if (handler) {
             var result = handler();
-            typeResponse(result, function() {
+            typeResponse(result, function () {
                 if (inputLine) inputLine.style.display = '';
                 input.focus({ preventScroll: true });
                 body.scrollTop = body.scrollHeight;
@@ -188,7 +188,7 @@
         '<span class="terminal__heading">Welcome to BJNFNE Terminal v1.0</span>',
         'Type <span class="terminal__cmd">help</span> to see available commands.',
         ''
-    ].join('\n'), function() {
+    ].join('\n'), function () {
         if (inputLine) inputLine.style.display = '';
         body.scrollTop = body.scrollHeight;
     });
@@ -216,8 +216,8 @@
     });
 
     // Ensure terminal retains focus when clicked, unless text is being selected
-    termEl.addEventListener('pointerup', function(e) {
-        setTimeout(function() {
+    termEl.addEventListener('pointerup', function (e) {
+        setTimeout(function () {
             var sel = window.getSelection();
             if (!sel || sel.isCollapsed) {
                 var isInteractive = (e.target.tagName === 'A' || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.closest('a'));
@@ -227,13 +227,13 @@
     });
 
     // Global auto-focus helper: if typing anywhere on the page, send it to terminal.
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         var active = document.activeElement;
         // Don't intercept if user is currently typing in another input/textarea
         if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) return;
         // Don't intercept modifier keys, F-keys, or shortcuts like Ctrl+C
         if (e.ctrlKey || e.altKey || e.metaKey || e.key.length !== 1) return;
-        
+
         input.focus({ preventScroll: true });
     });
 

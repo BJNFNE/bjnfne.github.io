@@ -88,7 +88,7 @@
 
             S.observeEl(a);
         });
-        
+
         grid.appendChild(fragment);
     };
 
@@ -129,7 +129,7 @@
             fragment.appendChild(a);
             S.observeEl(a);
         });
-        
+
         grid.appendChild(fragment);
     };
 
@@ -159,7 +159,7 @@
             fragment.appendChild(a);
             S.observeEl(a);
         });
-        
+
         grid.appendChild(fragment);
     };
 

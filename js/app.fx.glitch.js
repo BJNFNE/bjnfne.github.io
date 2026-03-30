@@ -20,7 +20,8 @@
         fontSize = parseFloat(style.fontSize),
         fontStr = style.fontWeight + ' ' + fontSize + 'px ' + style.fontFamily,
         rect = titleEl.getBoundingClientRect(),
-        dpr = window.devicePixelRatio || 1;
+        isMobile = window.innerWidth < 768,
+        dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 3);
 
     var pad = Math.round(fontSize * 1.5),
         cw = Math.round(rect.width + pad * 2),
@@ -87,9 +88,9 @@
         cx.drawImage(offCvs, 0, 0, cw * dpr, ch * dpr, 0, 0, cw, ch);
     }
 
-    var SLICE_COUNT = 18,
+    var SLICE_COUNT = isMobile ? 8 : 18,
         sliceH = ch / SLICE_COUNT,
-        TOTAL_DURATION = 3000,
+        TOTAL_DURATION = isMobile ? 2000 : 3000,
         startTime = performance.now(),
         animId = null;
 
@@ -149,39 +150,71 @@
             var rgbOff = sl.rgbSpread * intensity;
 
             if (rgbOff > 0.5) {
-                var blurR = (1.5 * intensity).toFixed(1),
-                    blurG = (1 * intensity).toFixed(1),
-                    blurB = (1.5 * intensity).toFixed(1);
+                if (isMobile) {
+                    // Simplified RGB split without blur for mobile performance
+                    var rgbChannels = [
+                        { dx: offX - rgbOff, color: 'rgb(255,0,80)' },
+                        { dx: offX, color: 'rgb(0,255,135)' },
+                        { dx: offX + rgbOff, color: 'rgb(0,180,255)' }
+                    ];
 
-                var rgbChannels = [
-                    { dx: offX - rgbOff, color: 'rgb(255,0,80)', blur: blurR },
-                    { dx: offX, color: 'rgb(0,255,135)', blur: blurG },
-                    { dx: offX + rgbOff, color: 'rgb(0,180,255)', blur: blurB }
-                ];
+                    for (var c = 0; c < rgbChannels.length; c++) {
+                        var chan = rgbChannels[c];
 
-                for (var c = 0; c < rgbChannels.length; c++) {
-                    var chan = rgbChannels[c];
+                        tintCx.clearRect(0, 0, cw, ch);
+                        tintCx.globalCompositeOperation = 'source-over';
+                        tintCx.globalAlpha = 1;
+                        tintCx.drawImage(offCvs,
+                            0, sl.y * dpr, cw * dpr, sl.h * dpr,
+                            chan.dx, sl.y + offY, cw, sl.h);
+                        tintCx.globalCompositeOperation = 'source-in';
+                        tintCx.fillStyle = chan.color;
+                        tintCx.fillRect(0, 0, cw, ch);
 
-                    tintCx.clearRect(0, 0, cw, ch);
-                    tintCx.globalCompositeOperation = 'source-over';
-                    tintCx.globalAlpha = 1;
-                    tintCx.filter = 'blur(' + chan.blur + 'px)';
-                    tintCx.drawImage(offCvs,
-                        0, sl.y * dpr, cw * dpr, sl.h * dpr,
-                        chan.dx, sl.y + offY, cw, sl.h);
-                    tintCx.filter = 'none';
-                    tintCx.globalCompositeOperation = 'source-in';
-                    tintCx.fillStyle = chan.color;
-                    tintCx.fillRect(0, 0, cw, ch);
+                        cx.save();
+                        cx.globalCompositeOperation = 'lighter';
+                        cx.globalAlpha = 0.8;
+                        cx.beginPath();
+                        cx.rect(0, sl.y + offY, cw, sl.h);
+                        cx.clip();
+                        cx.drawImage(tintCvs, 0, 0, cw * dpr, ch * dpr, 0, 0, cw, ch);
+                        cx.restore();
+                    }
+                } else {
+                    var blurR = (1.5 * intensity).toFixed(1),
+                        blurG = (1 * intensity).toFixed(1),
+                        blurB = (1.5 * intensity).toFixed(1);
 
-                    cx.save();
-                    cx.globalCompositeOperation = 'lighter';
-                    cx.globalAlpha = 0.8;
-                    cx.beginPath();
-                    cx.rect(0, sl.y + offY, cw, sl.h);
-                    cx.clip();
-                    cx.drawImage(tintCvs, 0, 0, cw * dpr, ch * dpr, 0, 0, cw, ch);
-                    cx.restore();
+                    var rgbChannels = [
+                        { dx: offX - rgbOff, color: 'rgb(255,0,80)', blur: blurR },
+                        { dx: offX, color: 'rgb(0,255,135)', blur: blurG },
+                        { dx: offX + rgbOff, color: 'rgb(0,180,255)', blur: blurB }
+                    ];
+
+                    for (var c = 0; c < rgbChannels.length; c++) {
+                        var chan = rgbChannels[c];
+
+                        tintCx.clearRect(0, 0, cw, ch);
+                        tintCx.globalCompositeOperation = 'source-over';
+                        tintCx.globalAlpha = 1;
+                        tintCx.filter = 'blur(' + chan.blur + 'px)';
+                        tintCx.drawImage(offCvs,
+                            0, sl.y * dpr, cw * dpr, sl.h * dpr,
+                            chan.dx, sl.y + offY, cw, sl.h);
+                        tintCx.filter = 'none';
+                        tintCx.globalCompositeOperation = 'source-in';
+                        tintCx.fillStyle = chan.color;
+                        tintCx.fillRect(0, 0, cw, ch);
+
+                        cx.save();
+                        cx.globalCompositeOperation = 'lighter';
+                        cx.globalAlpha = 0.8;
+                        cx.beginPath();
+                        cx.rect(0, sl.y + offY, cw, sl.h);
+                        cx.clip();
+                        cx.drawImage(tintCvs, 0, 0, cw * dpr, ch * dpr, 0, 0, cw, ch);
+                        cx.restore();
+                    }
                 }
             } else {
                 cx.save();
@@ -209,7 +242,7 @@
             }
         }
 
-        if (intensity > 0.05) {
+        if (!isMobile && intensity > 0.05) {
             cx.save();
             cx.globalCompositeOperation = 'source-over';
             cx.globalAlpha = 0.04 * intensity;

@@ -1,0 +1,48 @@
+﻿/* ============================================
+   BJNFNE — Utils: Focus, Selection, Scrollbar
+   Designed & developed by DosX
+   ============================================ */
+
+/* --- Focus Visible --- */
+:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
+}
+
+.social-link:focus-visible,
+.nav__cta:focus-visible,
+.project-card:focus-visible,
+.collab-card:focus-visible,
+.partner-card:focus-visible,
+.profile-card__cta:focus-visible {
+    outline-offset: 4px;
+}
+
+.terminal__input:focus,
+.terminal__input:focus-visible {
+    outline: none;
+}
+
+/* --- Selection --- */
+::selection {
+    background: rgba(77, 144, 228, 0.3);
+    color: #fff;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+}

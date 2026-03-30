@@ -1,0 +1,74 @@
+﻿/* ============================================
+   BJNFNE — Partner Cards
+   Designed & developed by DosX
+   ============================================ */
+
+/* --- Partner Cards --- */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.partner-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    transition: var(--transition);
+}
+
+.partner-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.partner-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.partner-card:hover .partner-card__avatar {
+    border-color: var(--accent);
+}
+
+.partner-card__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.partner-card__name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.partner-card__platform {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+
+.partner-card:hover .partner-card__platform {
+    color: var(--text-secondary);
+}
+
+.partner-card__arrow {
+    color: var(--text-muted);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.partner-card:hover .partner-card__arrow {
+    color: var(--accent-bright);
+    transform: translate(2px, -2px);
+}

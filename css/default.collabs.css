@@ -1,0 +1,87 @@
+﻿/* ============================================
+   BJNFNE — Collaboration Cards
+   Designed & developed by DosX
+   ============================================ */
+
+/* --- Collab Cards --- */
+.collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.collab-card {
+    display: block;
+    transition: var(--transition);
+}
+
+.collab-card__inner {
+    position: relative;
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    contain: layout style;
+}
+
+.collab-card:hover .collab-card__inner {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 0 20px var(--accent-glow);
+}
+
+.collab-card:hover {
+    transform: translateY(-3px);
+}
+
+.collab-card__icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyan);
+    background: rgba(0, 210, 255, 0.06);
+    border: 1px solid rgba(0, 210, 255, 0.12);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    margin-bottom: 20px;
+    transition:
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.collab-card:hover .collab-card__icon {
+    background: rgba(0, 210, 255, 0.12);
+    border-color: rgba(0, 210, 255, 0.25);
+}
+
+.collab-card__name {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.collab-card__author {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.collab-card__arrow {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.collab-card:hover .collab-card__arrow {
+    color: var(--cyan);
+    transform: translate(2px, -2px);
+}

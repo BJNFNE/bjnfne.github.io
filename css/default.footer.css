@@ -1,0 +1,88 @@
+﻿/* ============================================
+   BJNFNE — Footer
+   Designed & developed by DosX
+   ============================================ */
+
+/* --- Footer --- */
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.footer__brand {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: color var(--transition);
+}
+
+.footer__brand:hover {
+    color: var(--accent-bright);
+}
+
+.footer__links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer__links a {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.footer__links a:hover {
+    color: var(--accent-bright);
+}
+
+.footer__copy {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer__credit {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-width: 300px;
+}
+
+.footer__credit a {
+    color: var(--accent-bright);
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+}
+
+.footer__credit a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gradient-1);
+    transition: var(--transition);
+}
+
+.footer__credit a:hover {
+    color: var(--cyan);
+}
+
+.footer__credit a:hover::after {
+    width: 100%;
+}

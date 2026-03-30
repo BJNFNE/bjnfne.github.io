@@ -1,0 +1,129 @@
+﻿/* ============================================
+   BJNFNE — Responsive / Media Queries
+   Designed & developed by DosX
+   ============================================ */
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .nav__links {
+        display: none;
+    }
+
+    .nav__burger {
+        display: flex;
+    }
+
+    .hero {
+        padding: 100px 0 60px;
+    }
+
+    .hero__title {
+        letter-spacing: -2px;
+    }
+
+    .hero__badge {
+        font-size: 0.7rem;
+        padding: 6px 16px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section__header {
+        margin-bottom: 40px;
+    }
+
+    .profile-card__inner {
+        flex-direction: column;
+        padding: 32px 24px;
+        align-items: center;
+    }
+
+    .profile-card__left {
+        min-width: unset;
+    }
+
+    .profile-card__divider {
+        width: 80%;
+        height: 1px;
+        margin: 24px 0;
+        align-self: center;
+    }
+
+    .profile-card__right {
+        width: 100%;
+    }
+
+    .profile-card__stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .profile-card__avatar-wrap {
+        width: 110px;
+        height: 110px;
+    }
+
+    .project-card__content {
+        padding: 28px;
+    }
+
+    .project-card__name {
+        font-size: 1.3rem;
+    }
+
+    .collab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__geo--1 {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hero__geo--2 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .hero__geo--3 {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero__title {
+        letter-spacing: -1px;
+    }
+
+    .social-link {
+        width: 44px;
+        height: 44px;
+    }
+
+    .hero__socials {
+        gap: 12px;
+    }
+
+    .collab-card__inner {
+        padding: 20px;
+    }
+
+    .partner-card {
+        padding: 18px 20px;
+    }
+
+    .terminal__body {
+        font-size: 0.75rem;
+        min-height: 200px;
+    }
+}

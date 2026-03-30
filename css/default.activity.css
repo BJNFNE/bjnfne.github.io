@@ -1,0 +1,116 @@
+﻿/* ============================================
+   BJNFNE — Activity Feed
+   Designed & developed by DosX
+   ============================================ */
+
+/* --- Activity Feed --- */
+.activity-feed {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: 340px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(77, 144, 228, 0.35) transparent;
+}
+
+.activity-feed::-webkit-scrollbar {
+    width: 6px;
+}
+
+.activity-feed::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.activity-feed::-webkit-scrollbar-thumb {
+    background: rgba(77, 144, 228, 0.35);
+    border-radius: 3px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.activity-feed::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 197, 253, 0.65);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.activity__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.activity__item:last-child {
+    border-bottom: none;
+}
+
+.activity__icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(77, 144, 228, 0.12);
+    color: var(--accent-bright);
+}
+
+.activity__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity__desc {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.activity__repo {
+    color: var(--accent-bright);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.activity__repo:hover {
+    text-decoration: underline;
+}
+
+.activity__branch {
+    color: #00d2ff;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+}
+
+.activity__msg {
+    display: block;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.78rem;
+    font-family: "JetBrains Mono", monospace;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activity__time {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: "JetBrains Mono", monospace;
+    margin-top: 4px;
+    display: block;
+}
+
+.activity__empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 40px 0;
+    font-size: 0.88rem;
+}

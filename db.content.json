@@ -1,0 +1,16 @@
+{"_meta":{"site":"BJNFNE","designed_by":"DosX (https://github.com/DosX-dev)"},
+"myProjects":[
+  {"name":"DEV7","repo":"BJNFNE/DEV7","url":"https://github.com/BJNFNE/DEV7","fallbackDesc":"Flagship project — development tools and utilities","tags":["Open Source","Tool"],"icon":"code"}
+],
+"collaborations":[
+  {"name":"Detect It Easy","repo":"horsicq/Detect-It-Easy","url":"https://github.com/horsicq/Detect-It-Easy","author":"horsicq","icon":"search"},
+  {"name":"SafeNova","repo":"DosX-dev/SafeNova","url":"https://github.com/DosX-dev/SafeNova","author":"DosX-dev","icon":"shield"},
+  {"name":"BatchToApp","repo":"DosX-dev/BatchToApp","url":"https://github.com/DosX-dev/BatchToApp","author":"DosX-dev","icon":"terminal"},
+  {"name":"obfus.h","repo":"DosX-dev/obfus.h","url":"https://github.com/DosX-dev/obfus.h","author":"DosX-dev","icon":"cube"},
+  {"name":"CVAC","repo":"DerCodeDev/CVAC","url":"https://github.com/DerCodeDev/CVAC","author":"DerCodeDev","icon":"layers"}
+],
+"partners":[
+  {"name":"DosX-dev","url":"https://github.com/DosX-dev","avatar":"https://github.com/DosX-dev.png?size=120","platform":"GitHub"},
+  {"name":"horsicq","url":"https://github.com/horsicq/","avatar":"https://github.com/horsicq.png?size=120","platform":"GitHub"},
+  {"name":"DerCodeDev","url":"https://samir24.de/","avatar":"https://github.com/DerCodeDev.png?size=120","platform":"Website"}
+]}

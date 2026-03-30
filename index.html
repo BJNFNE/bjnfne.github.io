@@ -1,213 +1,388 @@
+<!--
+    BJNFNE — Developer & Security Researcher
+    Designed & developed by DosX (https://github.com/DosX-dev)
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <title>BJNFNE — Developer & Security Researcher</title>
+    <meta name="description" content="BJNFNE — Developer, Security Researcher. Open-source projects, reverse engineering tools, and collaborations.">
+    <meta name="keywords" content="BJNFNE, developer, security researcher, reverse engineering, open source, DEV7, Detect It Easy">
+    <meta name="author" content="BJNFNE">
+    <meta name="theme-color" content="#06060b">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="index, follow">
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Inter', Arial, sans-serif;
-            background: #050508;
-            color: #fff;
-            overflow: hidden;
-        }
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BJNFNE — Developer & Security Researcher">
+    <meta property="og:description" content="Open-source projects, reverse engineering tools, and collaborations.">
+    <meta property="og:url" content="https://bjnfne.github.io/">
+    <meta property="og:site_name" content="BJNFNE">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://bjnfne.github.io/og-image.png">
 
-        /* ── Animated gradient orbs in the background ── */
-        .bg {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@BJNFNE">
+    <meta name="twitter:creator" content="@BJNFNE">
+    <meta name="twitter:title" content="BJNFNE — Developer & Security Researcher">
+    <meta name="twitter:description" content="Open-source projects, reverse engineering tools, and collaborations.">
+    <meta name="twitter:image" content="https://bjnfne.github.io/og-image.png">
 
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.35;
-            animation: drift 18s ease-in-out infinite alternate;
-        }
-
-        .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #6c2bd9, transparent 70%);
-            top: -160px;
-            left: -160px;
-            animation-duration: 20s;
-        }
-
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #1a56e8, transparent 70%);
-            bottom: -120px;
-            right: -120px;
-            animation-duration: 16s;
-            animation-delay: -6s;
-        }
-
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, #9b2de0, transparent 70%);
-            top: 50%;
-            left: 60%;
-            animation-duration: 24s;
-            animation-delay: -10s;
-            opacity: 0.2;
-        }
-
-        @keyframes drift {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(40px, 30px) scale(1.08);
-            }
-
-            100% {
-                transform: translate(-20px, 50px) scale(0.96);
-            }
-        }
-
-        /* ── Subtle grid overlay ── */
-        .grid {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-
-        /* ── Card ── */
-        .card {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 3.5rem 4rem;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
-            max-width: 560px;
-            width: 90vw;
-            animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(32px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ── Badge ── */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #a78bfa;
-            background: rgba(139, 92, 246, 0.12);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            padding: 5px 14px;
-            border-radius: 999px;
-            margin-bottom: 2rem;
-        }
-
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #a78bfa;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
-        }
-
-        /* ── Heading ── */
-        .card h1 {
-            font-size: clamp(2.4rem, 6vw, 3.4rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.25rem;
-            background: linear-gradient(135deg, #ffffff 30%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ── Sub text ── */
-        .card p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.55);
-            margin-bottom: 2.5rem;
-        }
-    </style>
+    <link rel="canonical" href="https://bjnfne.github.io/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="author" type="text/plain" href="humans.txt">
+    <link rel="preconnect" href="https://api.github.com">
+    <link rel="preconnect" href="https://avatars.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/default.base.css">
+    <link rel="stylesheet" href="css/default.background.css">
+    <link rel="stylesheet" href="css/default.nav.css">
+    <link rel="stylesheet" href="css/default.hero.css">
+    <link rel="stylesheet" href="css/default.sections.css">
+    <link rel="stylesheet" href="css/default.profile.css">
+    <link rel="stylesheet" href="css/default.projects.css">
+    <link rel="stylesheet" href="css/default.collabs.css">
+    <link rel="stylesheet" href="css/default.partners.css">
+    <link rel="stylesheet" href="css/default.footer.css">
+    <link rel="stylesheet" href="css/default.terminal.css">
+    <link rel="stylesheet" href="css/default.activity.css">
+    <link rel="stylesheet" href="css/default.animations.css">
+    <link rel="stylesheet" href="css/default.responsive.css">
+    <link rel="stylesheet" href="css/default.utils.css">
+    <link rel="stylesheet" href="css/default.context-menu.css">
 </head>
 
 <body>
-    <div class="bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-    <div class="grid"></div>
+    <!-- Animated Background -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <canvas id="cursorTrail" aria-hidden="true"></canvas>
+    <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
 
-    <div class="card">
-        <div class="badge">
-            <span class="badge-dot"></span>
-            In development
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__logo">
+                <span class="nav__logo-bracket">&lt;</span>BJNFNE<span class="nav__logo-bracket">/&gt;</span>
+            </a>
+            <div class="nav__links">
+                <a href="#profile" class="nav__link">Profile</a>
+                <a href="#projects" class="nav__link">Projects</a>
+                <a href="#collabs" class="nav__link">Collaborations</a>
+                <a href="#partners" class="nav__link">Partners</a>
+                <a href="#terminalSection" class="nav__link">Terminal</a>
+                <a href="https://github.com/BJNFNE" class="nav__cta" target="_blank" rel="noopener noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <h1>Coming Soon</h1>
-        <p>We're working hard to bring you something great.<br>Stay tuned — it's almost ready.</p>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu__inner">
+            <a href="#profile" class="mobile-menu__link">Profile</a>
+            <a href="#projects" class="mobile-menu__link">Projects</a>
+            <a href="#collabs" class="mobile-menu__link">Collaborations</a>
+            <a href="#partners" class="mobile-menu__link">Partners</a>
+            <a href="#terminalSection" class="mobile-menu__link">Terminal</a>
+            <a href="https://github.com/BJNFNE" class="mobile-menu__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
     </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge" data-animate="fade-up">
+                    <span class="hero__badge-dot"></span>
+                    Open Source Developer
+                </div>
+                <h1 class="hero__title" id="heroTitle" data-animate="fade-up" data-delay="100">
+                    BJNFNE
+                </h1>
+                <p class="hero__subtitle" data-animate="fade-up" data-delay="200">
+                    Building tools for <span class="text-gradient">security research</span> and <span class="text-gradient">reverse engineering</span>
+                </p>
+                <div class="hero__socials" data-animate="fade-up" data-delay="300">
+                    <a href="https://github.com/BJNFNE/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://x.com/BJNFNE" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="https://t.me/BJNFNE" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                        </svg>
+                    </a>
+                    <a href="https://mastodon.social/@bjnfne" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Mastodon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.809.479 3.362.579 4.612.51 2.268-.126 3.542-.809 3.542-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.433 4.014.536c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.687-1.843 4.965-3.254.434-2.223.398-5.424.398-5.424zm-3.353 5.59h-2.081V9.057c0-2.214-2.222-2.307-2.222-.086v3.996h-2.069V8.971c0-2.221-2.222-2.129-2.222.086v5.099h-2.081c0-5.444-.232-6.588.82-7.805 1.156-1.254 3.563-1.375 4.635.274l.587.986.587-.986c1.073-1.649 3.48-1.528 4.636-.274 1.052 1.217.82 2.361.82 7.805z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hero__scroll" data-animate="fade-up" data-delay="500">
+                    <a href="#projects" class="scroll-indicator">
+                        <span>Explore</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12l7 7 7-7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Geometric decorations -->
+        <div class="hero__geo hero__geo--1" aria-hidden="true"></div>
+        <div class="hero__geo hero__geo--2" aria-hidden="true"></div>
+        <div class="hero__geo hero__geo--3" aria-hidden="true"></div>
+    </section>
+
+    <!-- GitHub Profile Section -->
+    <section class="section profile-section" id="profile">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag">// whoami</span>
+                <h2 class="section__title">Developer Profile</h2>
+                <div class="section__line"></div>
+            </div>
+            <div class="profile-card" id="profileCard" data-animate="fade-up" data-delay="200">
+                <div class="profile-card__glow"></div>
+                <div class="profile-card__inner">
+                    <div class="profile-card__left">
+                        <div class="profile-card__avatar-wrap">
+                            <img class="profile-card__avatar" id="profileAvatar" src="" alt="BJNFNE" width="200" height="200">
+                            <div class="profile-card__avatar-ring"></div>
+                            <div class="profile-card__status">
+                                <span class="profile-card__status-dot"></span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/BJNFNE" class="profile-card__username" target="_blank" rel="noopener noreferrer">
+                            <span class="profile-card__at">@</span><span id="profileLogin">BJNFNE</span>
+                        </a>
+                        <span class="profile-card__realname" id="profileName">Benjamin Funke</span>
+                        <p class="profile-card__bio" id="profileBio"></p>
+                        <div class="profile-card__meta">
+                            <div class="profile-meta-item" id="profileLocation">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                <span></span>
+                            </div>
+                            <div class="profile-meta-item" id="profileJoined">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-card__divider"></div>
+                    <div class="profile-card__right">
+                        <div class="profile-card__stats-grid">
+                            <a href="https://github.com/BJNFNE?tab=repositories" class="profile-stat" target="_blank" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                                </svg>
+                                <div class="profile-stat__text">
+                                    <span class="profile-stat__value" id="statRepos">&mdash;</span>
+                                    <span class="profile-stat__label">Repos</span>
+                                </div>
+                            </a>
+                            <a href="https://github.com/BJNFNE?tab=followers" class="profile-stat" target="_blank" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                                <div class="profile-stat__text">
+                                    <span class="profile-stat__value" id="statFollowers">&mdash;</span>
+                                    <span class="profile-stat__label">Followers</span>
+                                </div>
+                            </a>
+                            <a href="https://github.com/BJNFNE?tab=following" class="profile-stat" target="_blank" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="8.5" cy="7" r="4" />
+                                    <polyline points="17 11 19 13 23 9" />
+                                </svg>
+                                <div class="profile-stat__text">
+                                    <span class="profile-stat__value" id="statFollowing">&mdash;</span>
+                                    <span class="profile-stat__label">Following</span>
+                                </div>
+                            </a>
+                            <div class="profile-stat">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 .587l3.668 7.431L24 9.168l-6 5.848 1.416 8.254L12 19.771l-7.416 3.5L6 15.016 0 9.168l8.332-1.15z" />
+                                </svg>
+                                <div class="profile-stat__text">
+                                    <span class="profile-stat__value" id="statStars">&mdash;</span>
+                                    <span class="profile-stat__label">Total Stars</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card__langs" id="profileLangs">
+                            <h4 class="profile-card__langs-title">Top Languages</h4>
+                            <div class="profile-langs-bars" id="profileLangsBars"></div>
+                        </div>
+                        <a href="https://github.com/BJNFNE" class="profile-card__cta" target="_blank" rel="noopener noreferrer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            <span>View Full Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag">// 01</span>
+                <h2 class="section__title">My Projects</h2>
+                <div class="section__line"></div>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Rendered by JS from projects-db.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborations Section -->
+    <section class="section section--alt" id="collabs">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag">// 02</span>
+                <h2 class="section__title">Collaborations</h2>
+                <p class="section__subtitle">Projects where I actively contributed or collaborated with</p>
+                <div class="section__line"></div>
+            </div>
+            <div class="collab-grid" id="collabsGrid">
+                <!-- Rendered by JS from projects-db.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section" id="partners">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag">// 03</span>
+                <h2 class="section__title">Partners</h2>
+                <div class="section__line"></div>
+            </div>
+            <div class="partners-grid" id="partnersGrid">
+                <!-- Rendered by JS from projects-db.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Feed Section -->
+    <section class="section section--alt" id="activity">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag">// activity</span>
+                <h2 class="section__title">Recent Activity</h2>
+                <p class="section__subtitle">Live feed tracker from GitHub</p>
+                <div class="section__line"></div>
+            </div>
+            <div class="activity-feed" id="activityFeed" data-animate="fade-up" data-delay="200">
+                <!-- Rendered by JS from GitHub Events API -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Section -->
+    <section class="section" id="terminalSection">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag">// terminal</span>
+                <h2 class="section__title">Interactive Terminal</h2>
+                <p class="section__subtitle">Try typing a command</p>
+                <div class="section__line"></div>
+            </div>
+            <div class="terminal" id="terminal" data-animate="fade-up" data-delay="200">
+                <div class="terminal__header">
+                    <span class="terminal__title">visitor@bjnfne: ~</span>
+                    <div class="terminal__controls">
+                        <span class="terminal__ctrl terminal__ctrl--min">&#x2212;</span>
+                        <span class="terminal__ctrl terminal__ctrl--max"></span>
+                        <span class="terminal__ctrl terminal__ctrl--close">&#x2715;</span>
+                    </div>
+                </div>
+                <div class="terminal__body">
+                    <div class="terminal__output"></div>
+                    <div class="terminal__input-line">
+                        <span class="terminal__prompt">visitor@bjnfne</span><span class="terminal__colon">:</span><span class="terminal__path">~</span><span class="terminal__dollar">$</span>
+                        <input class="terminal__input" type="text" spellcheck="false" autocomplete="off" aria-label="Terminal input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="nav__logo-bracket">&lt;</span>BJNFNE<span class="nav__logo-bracket">/&gt;</span>
+                </div>
+                <div class="footer__links">
+                    <a href="https://github.com/BJNFNE/" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://x.com/BJNFNE" target="_blank" rel="noopener noreferrer">X</a>
+                    <a href="https://t.me/BJNFNE" target="_blank" rel="noopener noreferrer">Telegram</a>
+                    <a href="https://mastodon.social/@bjnfne" target="_blank" rel="noopener noreferrer">Mastodon</a>
+                </div>
+                <div class="footer__copy">
+                    &copy; 2024&ndash;2026 BJNFNE. All rights reserved.
+                </div>
+                <div class="footer__credit">
+                    Designed & developed by <a href="https://github.com/DosX-dev" target="_blank" rel="noopener noreferrer">DosX</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Modules -->
+    <script src="js/app.core.utils.js"></script>
+    <script src="js/app.fx.observer.js"></script>
+    <script src="js/app.core.api.js"></script>
+    <script src="js/app.render.content.js"></script>
+    <script src="js/app.fx.glitch.js"></script>
+    <script src="js/app.fx.cursor.js"></script>
+    <script src="js/app.fx.particles.js"></script>
+    <script src="js/app.ui.terminal.js"></script>
+    <script src="js/app.render.activity.js"></script>
+    <script src="js/app.ui.context-menu.js"></script>
+    <script src="js/app.core.main.js"></script>
 </body>
 
 </html>

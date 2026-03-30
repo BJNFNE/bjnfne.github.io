@@ -1,0 +1,14 @@
+/* TEAM */
+Developer: BJNFNE
+Site: https://bjnfne.github.io/
+GitHub: https://github.com/BJNFNE
+Location: Earth
+
+/* DESIGN & DEVELOPMENT */
+Designer & Developer: DosX
+GitHub: https://github.com/DosX-dev
+
+/* TECHNOLOGY */
+Standards: HTML5, CSS3, ES5+
+Components: Canvas API, GitHub REST API, IntersectionObserver
+Fonts: Inter, JetBrains Mono
